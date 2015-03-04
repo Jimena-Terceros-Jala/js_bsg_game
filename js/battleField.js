@@ -21,8 +21,13 @@ var BattleField = function (size) {
 
 	//print 
 	this.print = function() {
+		var header = 'C:  ';
 		for (var i = 0; i < this.size; i++) {
-			console.log('R' + i + ': ' + this.field[i].join('-'));
+			header += i + ' ';
+		}
+		console.log(header);
+		for (var i = 0; i < this.size; i++) {
+			console.log('R' + i + ': ' + this.field[i].join(',').replace(/-1/g, 'F').replace(/-2/g,'H').replace(/1/g, 'S'));
 		}
 	};
 
@@ -80,17 +85,20 @@ var BattleField = function (size) {
 	this.performShot = function(row, col) {
 		if ((this.field[row] != undefined) && (this.field[col] != undefined)) {
 			positionValue = this.field[row][col];
-			switch (positionValues) {
+			switch (positionValue) {
 				case this.WATTER: {
 					this.field[row][col] = this.FAILED;
 				};
+				break;
 				case this.SHIPPART: {
 					this.field[row][col] = this.HIT;
 					this.updateShipStatus(row, col);
 				};
+				break;
 				case this.FAILED: {
 					console.log('Shot duplicated');
 				};
+				break;
 				case this.HIT: {
 					console.log('Shot duplicated');
 				};

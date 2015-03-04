@@ -23,12 +23,42 @@ var Game = function(){
 		var battleFieldP2 = new BattleField(this.options.battleFieldSize);
 		battleFieldP1.initField();
 		battleFieldP2.initField();
+		
+		var p1Name = window.prompt('Player 1 Name:');
+		var p2Name = window.prompt('Player 2 Name:');
+		this.player1 = new Player(battleFieldP1, p1Name);
+		this.player2 = new Player(battleFieldP2, p2Name);
+
+		console.log('Player1: ', p1Name);
+		console.log('Player2: ', p2Name);
 
 		this.addShipsToBattleField(battleFieldP1);
 		this.addShipsToBattleField(battleFieldP2);
+	};
 
-		battleFieldP1.print();
-		battleFieldP2.print();
+	this.play = function() {
+		this.init();
+
+		this.player1.printBattleField();
+		this.player2.printBattleField();
+
+		var currentPlayer = (parseInt((Math.random() * 2))) ? this.player1 : this.player2;
+		while (this.player1.hasShipsAlive() && this.player2.hasShipsAlive()) {
+			var secondPlayer = (currentPlayer == this.player1) ? this.player2 : this.player1;
+			var positionStr = window.prompt(currentPlayer.name + '\n enter shot position, example 2,5: ');
+			var position = positionStr.split(',');
+			if (position.length == 2) {
+				secondPlayer.shot(position[0], position[1]);
+				secondPlayer.printBattleField();
+				currentPlayer = secondPlayer;
+			} else {
+				console.log('Invalid shot position');
+			}
+		}
+
+		var winner = (this.player1.hasShipsAlive()) ? this.player1: this.player2;
+
+		window.alert('Congratullations ' + winner.name + '!!!');
 
 	};
 
