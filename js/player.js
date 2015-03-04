@@ -14,4 +14,9 @@ var Player = function(battleField, name){
 	this.hasShipsAlive = function() {
 		return this.battleField.hasShipsAlive();
 	}
+
+	this.printBattleField = function() {
+		console.log(this.name + '\'s battlefield:');
+		this.battleField.print();
+	}
 };

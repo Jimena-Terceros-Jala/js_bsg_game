@@ -15,6 +15,11 @@ var Ship = function(size, orientation, shipPos){ // sipPost = {r:1, c:2}
 	//verify hit status
 	this.hit = function() {
 		this.hits++;
-		this.status = this.isAlive() ? 'HIT' : 'KILLED';
+		if (this.isAlive()) {
+			this.status = 'HIT';
+		} else {
+			this.status = 'KILLED';
+			alert('Ship destroyed!');
+		}
 	};
 };
