@@ -1,5 +1,6 @@
-// Game class is to play and this class all will be initialized
-
+/**
+ * Game class is to play and this class all will be initialized
+ */
 var Game = function(){
 	this.player1 = null;
 	this.player2 = null;
@@ -11,7 +12,9 @@ var Game = function(){
 		ship3: 0
 	};
 
-	// Initialize the game with field and ships
+	/**
+	 * Initialize the game with field and ships
+	 */
 	this.init = function() {
 		this.options.battleFieldSize = 10;
 		this.options.shipQuantity = 3;
@@ -36,6 +39,9 @@ var Game = function(){
 		this.addShipsToBattleField(battleFieldP2);
 	};
 
+	/**
+	 * All time the player put the coordinate
+	 */
 	this.play = function() {
 		this.init();
 
@@ -62,7 +68,10 @@ var Game = function(){
 
 	};
 
-	//This method is to add ships to battle field taken account numbers of ships
+	/**
+	 * This method is to add ships to battle field taken account numbers of ships
+	 * @param {object} battleField 
+	 */
 	this.addShipsToBattleField = function (battleField) {
 		var shipQuantity = this.options.shipQuantity;
 		var ship1Qty = this.options.ship1;
@@ -90,7 +99,11 @@ var Game = function(){
 		}
 	};
 
-	//This method is adding one ship to battle field
+	/**
+	 * This method is adding one ship to battle field
+	 * @param {number} size        The size the battle
+	 * @param {object} battleField 
+	 */
 	this.addShipToBattleField = function (size, battleField) {
 		var row = parseInt((Math.random() * this.options.battleFieldSize));
 		var col = parseInt((Math.random() * this.options.battleFieldSize));
@@ -98,5 +111,4 @@ var Game = function(){
 		var ship = new Ship(size, orientation, {r:row, c: col});
 		return battleField.addShip(ship);
 	};
-
 };
