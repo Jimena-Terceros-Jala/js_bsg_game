@@ -29,7 +29,7 @@ var Game = function(){
 		battleFieldP2.initField();
 		
 		do{
-			var p1Name = window.prompt('Only letter\nPlayer 1 Name:');
+			var p1Name = window.prompt('Just letter\nPlayer 1 Name:');
 			var RegExPattern = /[a-zA-Z]/;
 			if (p1Name.match(RegExPattern)){
 				correct = true;
@@ -38,7 +38,7 @@ var Game = function(){
 		
 		correct = false;
 		do{
-			var p2Name = window.prompt('Only letter\nPlayer 2 Name:');
+			var p2Name = window.prompt('Just letter\nPlayer 2 Name:');
 			var RegExPattern = /[a-zA-Z]/;
 			if (p2Name.match(RegExPattern)){
 				correct = true;
