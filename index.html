@@ -1,13 +1,38 @@
 <html>
 	<head>
-		
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/player.js"></script>
 		<script type="text/javascript" src="js/ship.js"></script>
 		<script type="text/javascript" src="js/battleField.js"></script>
 	</head>
 	<body>
-		Battle ship game!.
+		<h3>Battle ship game!.</h3> 
+		<h3>Game Objective</h3>
+		<p>The object of Battleship is to try and sink all of the other player's before they sink all of your ships. All of the other player's ships are somewhere on his/her board.  You try and hit them by calling out the coordinates of one of the squares on the board.  The other player also tries to hit your ships by calling out coordinates.</p>
+		
+		<h3>Starting a New Game</h3>		
+		<p>Each player places the 2 ships somewhere on their board.</p>
+		<ul>
+ 			<li>The ships can only be placed vertically or horizontally.</li>
+			<li>Diagonal placement is not allowed.</li>
+			<li>No part of a ship may hang off the edge of the board.</li>
+			<li>Ships may not overlap each other.</li>
+			<li>No ships may be placed on another ship.</li>
+		</ul>
+		<h3>Status Ship</h3>
+		<ul>
+ 			<li>Alive</li>
+			<li>Hit</li>
+			<li>Killed</li>
+		</ul>
+		<h3>Details</h3>
+		<ul>
+ 			<li>0 = Water</li>
+			<li>F = Failed</li>
+			<li>H = Hit</li>
+			<li>S = Ship</li>
+		</ul>
+		<img src="image\Ship.png" style="width:366px;height:210px">
 		<script type="text/javascript">
 			new Game().play();
 		</script>
