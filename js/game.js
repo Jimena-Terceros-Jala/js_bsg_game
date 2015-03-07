@@ -21,14 +21,30 @@ var Game = function(){
 		this.options.ship1 = 1;
 		this.options.ship2 = 1;
 		this.options.ship3 = 1;
+		var correct = false;
 
 		var battleFieldP1 = new BattleField(this.options.battleFieldSize);
 		var battleFieldP2 = new BattleField(this.options.battleFieldSize);
 		battleFieldP1.initField();
 		battleFieldP2.initField();
 		
-		var p1Name = window.prompt('Player 1 Name:');
-		var p2Name = window.prompt('Player 2 Name:');
+		do{
+			var p1Name = window.prompt('Only letter\nPlayer 1 Name:');
+			var RegExPattern = /[a-zA-Z]/;
+			if (p1Name.match(RegExPattern)){
+				correct = true;
+			}
+		}while(!correct)
+		
+		correct = false;
+		do{
+			var p2Name = window.prompt('Only letter\nPlayer 2 Name:');
+			var RegExPattern = /[a-zA-Z]/;
+			if (p2Name.match(RegExPattern)){
+				correct = true;
+			}
+		}while(!correct)
+
 		this.player1 = new Player(battleFieldP1, p1Name);
 		this.player2 = new Player(battleFieldP2, p2Name);
 
@@ -51,7 +67,16 @@ var Game = function(){
 		var currentPlayer = (parseInt((Math.random() * 2))) ? this.player1 : this.player2;
 		while (this.player1.hasShipsAlive() && this.player2.hasShipsAlive()) {
 			var secondPlayer = (currentPlayer == this.player1) ? this.player2 : this.player1;
-			var positionStr = window.prompt(currentPlayer.name + '\n enter shot position, example 2,5: ');
+			
+			var correct = false;
+			do{
+				var positionStr = window.prompt(currentPlayer.name + '\n enter shot position, example: 2,5 ');
+				var RegExPattern = /([0-9]{1,2}),([0-9]{1,2})/;
+				if (positionStr.match(RegExPattern)){
+					correct = true;
+				}
+			}while(!correct)
+
 			var position = positionStr.split(',');
 			if (position.length == 2) {
 				secondPlayer.shot(position[0], position[1]);
