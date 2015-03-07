@@ -68,12 +68,17 @@ var Game = function(){
 		while (this.player1.hasShipsAlive() && this.player2.hasShipsAlive()) {
 			var secondPlayer = (currentPlayer == this.player1) ? this.player2 : this.player1;
 			
+			var message = '\n enter shot position, example: 2,5 ';
 			var correct = false;
 			do{
-				var positionStr = window.prompt(currentPlayer.name + '\n enter shot position, example: 2,5 ');
+				var positionStr = window.prompt(currentPlayer.name + message);
 				var RegExPattern = /([0-9]{1,2}),([0-9]{1,2})/;
 				if (positionStr.match(RegExPattern)){
 					correct = true;
+					message = message + '\n enter shot position, example: 2,5 ';
+				}
+				else{
+					message = message + '\n            PLEASE input as example ';
 				}
 			}while(!correct)
 
