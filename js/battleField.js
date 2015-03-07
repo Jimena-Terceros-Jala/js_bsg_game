@@ -39,7 +39,7 @@ var BattleField = function (size) {
 
     /**
      * draw the battle field
-     * @param  {number} ship [description]
+     * @param  {object} ship the object ship 
      * @return {boolean} Whether something occurred.
      */
     this.drawShip = function(ship) {
@@ -54,9 +54,9 @@ var BattleField = function (size) {
 
     /**
      * validate and draw the ship
-     * @param  {number} ship [description]
-     * @param  {number} draw [description]
-     * @return {boolean}      [description]
+     * @param  {object} ship the battel
+     * @param  {object} draw the map
+     * @return {boolean} return true wether was set
      */
     this.validateAndDraw = function (ship, draw) {
         var isValid = true;
@@ -82,8 +82,7 @@ var BattleField = function (size) {
 
     /**
      * Validating if the ship fit bien in the battle field (considering only horizontal and vertical)
-     * @param  {number} ship [description]
-     * @return {Field}      [description]
+     * @param  {object} ship verify wether ship tle 
      */
     this.fitIntoTheField = function (ship) {
         return (((this.field[ship.position.r] != undefined) && (this.field[ship.position.r][ship.position.c] != undefined))
@@ -93,8 +92,8 @@ var BattleField = function (size) {
 
     /**
      * Add the ship
-     * @param {number} ship [description]
-     * @return {boolean} [description]
+     * @param {object} ship add 
+     * @return {boolean} return wether the shit was added
      */
     this.addShip = function (ship) {
         if(this.drawShip(ship)){
@@ -108,12 +107,6 @@ var BattleField = function (size) {
      * Perform the shot
      * @param  {number} row This is a position for row
      * @param  {number} col This is a position for column
-     */
-    /**
-     * [performShot description]
-     * @param  {[type]} row [description]
-     * @param  {[type]} col [description]
-     * @return {[type]}     [description]
      */
     this.performShot = function(row, col) {
         if ((this.field[row] != undefined) && (this.field[col] != undefined)) {
@@ -143,8 +136,8 @@ var BattleField = function (size) {
 
     /**
      * update the ship status after shotting
-     * @param  {number} row [description]
-     * @param  {number} col [description]
+     * @param  {number} row This is a position for row
+     * @param  {number} col This is a position for column
      */
     this.updateShipStatus = function (row, col) {
     this.ships.forEach(function (ship) {
